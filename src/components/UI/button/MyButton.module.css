@@ -1,0 +1,22 @@
+
+.app {
+    width: 800px;
+}
+
+.post {
+    display: flex;
+    padding: 15px;
+    border: 2px solid darkgreen;
+    margin-top: 15px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.myButton{
+    padding: 5px 15px;
+    color: teal;
+    font-size: 14px;
+    background: transparent;
+    border:  1px solid teal;
+    cursor: pointer;
+}
