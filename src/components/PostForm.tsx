@@ -22,6 +22,7 @@ export const PostForm = React.memo<PostFormType>(({createPost}) => {
         createPost({id: v1(), title: post.title, body: post.description})
         setPost({title: '', description: ''})
     }, [createPost, post.description, post.title])
+
     return (
         <form>
             <MyInput type={'text'} value={post.title} onChange={onChangeTitle} placeholder={'Title post'}/>
