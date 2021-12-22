@@ -2,10 +2,10 @@ import React, {ChangeEvent, MouseEvent, useCallback, useState} from 'react';
 import {MyInput} from "./UI/input/MyInput";
 import {MyButton} from "./UI/button/MyButton";
 import {v1} from "uuid";
-import {PostItemType} from "./PostItem";
+import {PostType} from "./PostItem";
 
 type PostFormType = {
-    createPost: (post: PostItemType) => void
+    createPost: (post: PostType) => void
 }
 export const PostForm = React.memo<PostFormType>(({createPost}) => {
     const [post, setPost] = useState({title: '', description: ''})
@@ -19,7 +19,7 @@ export const PostForm = React.memo<PostFormType>(({createPost}) => {
 
     const addNewPost = useCallback((event: MouseEvent) => {
         event.preventDefault()
-        createPost({id: v1(), title: post.title, body: post.description})
+        createPost({id: v1(), title: post.title, body: post.description, sort: 'none'})
         setPost({title: '', description: ''})
     }, [createPost, post.description, post.title])
 

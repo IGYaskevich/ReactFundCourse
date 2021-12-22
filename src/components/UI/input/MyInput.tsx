@@ -7,10 +7,11 @@ type MyInputType = {
     placeholder: string
     onChange: (event: ChangeEvent<HTMLInputElement>) => void
 
+
 }
-export const MyInput = ((props: MyInputType) => {
+export const MyInput = React.memo<MyInputType>(({placeholder,...props}) => {
     return (
-        <input className={style.myInput} {...props}/>
+        <input placeholder={placeholder} className={style.myInput} {...props}/>
     );
 });
 

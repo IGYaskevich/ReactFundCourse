@@ -1,20 +1,30 @@
 import React from 'react';
-import {PostItem, PostItemType} from "./PostItem";
+import {PostItem, PostType} from "./PostItem";
+
 
 type PostListType = {
-    posts: PostItemType[]
+    // posts: PostType[]
+    posts: PostType[]
     title: string
+    removePost: (postId: string) => void
 
 }
-export const PostList = (props: PostListType) => {
-
+export const PostList = React.memo<PostListType>(({posts, title, removePost}) => {
+    if (!posts.length) {
+        return (
+            <h1 style={{textAlign: 'center'}}>
+                Посты не найдены!
+            </h1>
+        )
+    }
     return (
         <div>
-            <h1 style={{textAlign: 'center'}}>{props.title}</h1>
-            {props.posts.map((item, index) => <PostItem number={index + 1} id={item.id} title={item.title}
-                                                        body={item.body}
-                                                        key={item.id}/>)}
+            <h1 style={{textAlign: 'center'}}>{title}</h1>
+            {posts.map((item, index) =>
+                <PostItem number={index + 1} post={item} removePost={removePost}/>
+            )}
+
         </div>
     );
-};
+});
 
